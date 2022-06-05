@@ -10,7 +10,7 @@ class Tree {
         std::vector<Node*> bratList;
     };
     Node* root;
-    void createtree(Node* root, std::vector<char> circ) {
+    void createtree(Node* root, std::vector<char> circle) {
         if (!circle.size())
             return;
         if (root->value != '*') {
