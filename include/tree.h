@@ -14,18 +14,22 @@ class Tree {
         if (!circle.size())
             return;
         if (root->value != '*') {
-            for (auto i = circle.begin(); i != circle.end(); i++)
-            if (*i == root->value) {
-                circle.erase(i);
-                break;
+            for (auto i = circle.begin(); i != circle.end(); i++) {
+             if (*i == root->value) {
+              circle.erase(i);
+              break;
+             }
             }
         }
-        for (size_t wh = 0; wh < circle.size(); wh++)
-            root->bratList.push_back(new Node());
-        for (size_t wh = 0; wh < root->bratList.size(); wh++)
-            root->bratList[wh]->value = circle[wh];
-        for (size_t wh = 0; wh < root->bratList.size(); wh++)
-            createtree(root->bratList[wh], circle);
+        for (size_t wh = 0; wh < circle.size(); wh++) {
+         root->bratList.push_back(new Node());
+        }
+        for (size_t wh = 0; wh < root->bratList.size(); wh++) {
+         root->bratList[wh]->value = circle[wh];
+        }
+        for (size_t wh = 0; wh < root->bratList.size(); wh++) {
+         createtree(root->bratList[wh], circle);
+        }
     }
     std::vector<std::string> gree;
     void pr(Node* root, std::string str = "") {
@@ -33,16 +37,19 @@ class Tree {
             str += root->value;
             gree.push_back(str);
         }
-        if (root->value != '*')
-            str += root->value;
-        for (size_t wh = 0; wh < root->bratList.size(); wh++)
-            pr(root->bratList[wh], str);
+        if (root->value != '*') {
+         str += root->value;
+        }
+        for (size_t wh = 0; wh < root->bratList.size(); wh++) {
+         pr(root->bratList[wh], str);
+        }
     }
 
  public:
     std::string operator[](int j) const {
-        if (j >= gree.size())
-            return "";
+        if (j >= gree.size()) {
+         return "";
+        }
         return gree[j];
     }
     explicit Tree(std::vector<char> value) {
